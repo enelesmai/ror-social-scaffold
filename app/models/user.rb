@@ -9,4 +9,20 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+
+  has_many :friendships
+
+  def friends
+    friendships.map { |f| f.friend if f.confirmed }
+  end
+
+  def friend?(user)
+    self.friends.include?(user)
+  end
+
+  def added?(user)
+    user == self ||
+    friendships.where(friend: self, user: user).exists? ||
+    friendships.where(friend: user, user: self).exists?
+  end
 end
