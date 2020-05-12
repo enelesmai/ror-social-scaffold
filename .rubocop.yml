@@ -48,14 +48,15 @@ Layout/ExtraSpacing:
 Layout/MultilineMethodCallIndentation:
   Enabled: true
   EnforcedStyle: indented
-Layout/SpaceAroundMethodCallOperator:
-  Enabled: false
+
+# Layout/SpaceAroundMethodCallOperator:
+#   Enabled: false
 Lint/RaiseException:
   Enabled: false
 Lint/StructNewOverride:
   Enabled: false
-Style/ExponentialNotation:
-  Enabled: false
+# Style/ExponentialNotation:
+#   Enabled: false
 Style/HashEachMethods:
   Enabled: false
 Style/HashTransformKeys:
