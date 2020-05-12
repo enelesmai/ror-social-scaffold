@@ -18,10 +18,8 @@ module ApplicationHelper
 
   def request_friend(user)
     html = ''
-    unless current_user.added?(user)
-      html +=  link_to 'Invite to friendship',  friendships_path(user: user), method: :post
-    end
+    html += link_to 'Invite to friendship', friendships_path(user: user), method: :post unless current_user.added?(user)
 
-    return html.html_safe
+    html.html_safe
   end
 end

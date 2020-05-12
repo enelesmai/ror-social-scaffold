@@ -17,12 +17,12 @@ class User < ApplicationRecord
   end
 
   def friend?(user)
-    self.friends.include?(user)
+    friends.include?(user)
   end
 
   def added?(user)
     user == self ||
-    Friendship.where(user: user, friend: self).exists? ||
-    friendships.where(friend: user).exists?
+      Friendship.where(user: user, friend: self).exists? ||
+      friendships.where(friend: user).exists?
   end
 end

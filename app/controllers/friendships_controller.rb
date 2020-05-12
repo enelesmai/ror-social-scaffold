@@ -15,10 +15,10 @@ class FriendshipsController < ApplicationController
 
     if params[:confirmed] == 'true'
       @friendship.accept
-      flash.notice = "Friendship was accepted"
+      flash.notice = 'Friendship was accepted'
     else
       @friendship.destroy
-      flash.notice = "Friendship was declined"
+      flash.notice = 'Friendship was declined'
     end
     redirect_to request.referrer
   end
