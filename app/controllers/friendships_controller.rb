@@ -15,6 +15,7 @@ class FriendshipsController < ApplicationController
 
     if params[:confirmed] == 'true'
       @friendship.accept
+      current_user.friendships.create(friend: @friendship.user, confirmed: true)
       flash.notice = 'Friendship was accepted'
     else
       @friendship.destroy
