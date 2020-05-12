@@ -1,6 +1,6 @@
 class FriendshipsController < ApplicationController
   def index
-    @friendship_request = Friendship.where(friend: current_user, confirmed: nil)
+    @friendship_requests = Friendship.where(friend: current_user, confirmed: nil)
   end
 
   def create
@@ -13,7 +13,7 @@ class FriendshipsController < ApplicationController
   def update
     @friendship = Friendship.find(params[:id])
 
-    if params[:confirmed] == true
+    if params[:confirmed] == 'true'
       @friendship.accept
     else
       @friendship.destroy

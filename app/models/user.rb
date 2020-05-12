@@ -22,7 +22,7 @@ class User < ApplicationRecord
 
   def added?(user)
     user == self ||
-    friendships.where(friend: self, user: user).exists? ||
-    friendships.where(friend: user, user: self).exists?
+    Friendship.where(user: user, friend: self).exists? ||
+    friendships.where(friend: user).exists?
   end
 end
