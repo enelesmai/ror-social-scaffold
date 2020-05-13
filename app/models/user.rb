@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   has_many :friendships
-  has_many :inverse_friendships, class_name: "Friendship", foreign_key: "friend_id"
+  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
   def friends
     friends = friendships.map { |f| f.friend if f.confirmed }
@@ -30,7 +30,7 @@ class User < ApplicationRecord
   end
 
   def friends_and_own_posts
-    arr = self.friends << self
-    posts = Post.where(user: arr).order(created_at: :desc)
+    arr = friends << self
+    Post.where(user: arr).order(created_at: :desc)
   end
 end
