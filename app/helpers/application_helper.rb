@@ -22,4 +22,12 @@ module ApplicationHelper
 
     html.html_safe
   end
+
+  def requests?
+    @requests = Friendship.where(friend: current_user, confirmed: nil)
+    html = 'Friend Requests '
+    html += @requests.count.to_s if @requests
+
+    html.html_safe
+  end
 end

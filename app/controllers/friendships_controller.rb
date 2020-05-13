@@ -7,7 +7,7 @@ class FriendshipsController < ApplicationController
     @friend = User.find(params[:user])
 
     current_user.friendships.create(friend: @friend)
-    redirect_to request.referrer
+    redirect_to request.referrer, notice: 'Friendship request submitted'
   end
 
   def update
@@ -15,7 +15,6 @@ class FriendshipsController < ApplicationController
 
     if params[:confirmed] == 'true'
       @friendship.accept
-      current_user.friendships.create(friend: @friendship.user, confirmed: true)
       flash.notice = 'Friendship was accepted'
     else
       @friendship.destroy
