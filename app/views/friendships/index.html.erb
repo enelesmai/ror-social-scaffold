@@ -1,0 +1,7 @@
+<h1>Friendship requests</h1>
+<% @friendship_requests.each do |fr| %>
+    <li><%= fr.user.name %> - 
+        <%= link_to "Accept", friendship_path(fr, confirmed: true), method: :put %> / 
+        <%= link_to "Decline", friendship_path(fr, confirmed: false), method: :put %>    
+    </li>
+<% end %>

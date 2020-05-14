@@ -15,4 +15,19 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
+
+  def request_friend(user)
+    html = ''
+    html += link_to 'Invite to friendship', friendships_path(user: user), method: :post unless current_user.added?(user)
+
+    html.html_safe
+  end
+
+  def requests?
+    @requests = Friendship.where(friend: current_user, confirmed: nil)
+    html = 'Friend Requests '
+    html += @requests.count.to_s if @requests
+
+    html.html_safe
+  end
 end
